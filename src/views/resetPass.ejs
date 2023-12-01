@@ -1,0 +1,17 @@
+
+<% if(invalidCreds){%>
+    <div class="alert alert-success" style="margin-top: 40px;max-width: 25vw;margin-left: 60vw;margin-bottom:-40px;" role="alert">
+      <%=invalidCreds%>
+    </div>
+  <%}%>
+<div id="container">
+    <div  id="formDiv">
+        <h2 style="margin-bottom: 50px;"><img src="images/login.png" style="height: 35px;width: 35px;" alt=""> Reset Password</h2>
+    <form action="/resetSuccess" method="get">
+        <h5>Enter New Password </h5>
+        <input type="password" required class="formInput" name="password" id="" style="margin-bottom: 40px;height: 25px;background-color: rgb(234, 240, 242);width: 250px;border-radius: 5px;margin-top: 10px;"><br>
+        <button type="submit" class="btn btn-primary" style="margin: 30px 0px;margin-top: 10px;">Reset Password </button><br>
+        <a href="/nodemailer"><button type="button" class="btn btn-danger"><img src="images/google.jpg" style="height: 30px;width:30px;margin-right: 10px;" alt="">Send email to registered ID </button></a>
+    </form>
+    </div>
+</div>
