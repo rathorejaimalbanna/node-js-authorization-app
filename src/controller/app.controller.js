@@ -86,7 +86,7 @@ export default class appController{
   };
   fromGoogle(req,res)
   {
-    res.render('welcome',{user:"jai rathore"})
+    res.render('welcome',{user:null})
   }
   resetSuccess(req,res)
   {
