@@ -4,6 +4,7 @@ import ejsLayouts from 'express-ejs-layouts';
 import path from 'path';
 import session from 'express-session';
 import passport from 'passport';
+import bodyParser from 'body-parser';
 
 // import internal files
 import { db } from './Dbms/mongoose.connect.js';
@@ -22,13 +23,14 @@ var staticPath = path.join(path.resolve(),'config');
 app.use(express.static(staticPath));
 app.use(ejsLayouts);
 app.use(express.urlencoded());
-app.use(passport.initialize());
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false }
-  }));
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 // define routes

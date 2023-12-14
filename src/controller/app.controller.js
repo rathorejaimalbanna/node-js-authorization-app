@@ -78,7 +78,7 @@ export default class appController{
   };
 
   loginByGoogle(req,res)
-  { console.log('google')
+  { console.log(req.session.userName)
     passport.authenticate( 'google', {
         successRedirect: res.redirect('fromGoogle'),
         failureRedirect: 'authFailure'
