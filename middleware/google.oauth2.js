@@ -8,20 +8,15 @@ passport.use(new GoogleStrategy({
     callbackURL: "http://localhost:3200/loginByGoogle",
     passReqToCallback: true
   },
-  async function (request, accessToken, refreshToken, profile, done) {
+  async function (request, accessToken, refreshToken, profile, done)  {
+    // Your authentication logic goes here
+    console.log("this function is running")
     request.session.userEmail = profile.emails[0].value;
     request.session.userName = profile.displayName;
     console.log(request.session.userName);
-    console.log("this function is running")
-    const user = {
-      id: profile.emails[0].value,
-      displayName: profile.displayName
-    };
-
-    // Save user data to the database if necessary
-    // Example: await userData.create(user);
-
-    return done(null, user);
+    userData.findOrCreate({ googleId: profile.id }, function (err, user) {
+        return done(err, user);
+    });
   }
 ));
 
